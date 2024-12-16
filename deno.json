@@ -1,0 +1,16 @@
+{
+  "imports": {
+    "hono": "npm:hono",
+    "mongoose": "npm:mongoose@^8.9.0",
+    "mongo": "https://deno.land/x/mongo@v0.31.1/mod.ts",
+    "mongodb": "https://deno.land/x/mongo@v0.31.1/mod.ts",
+    "oakCors": "https://deno.land/x/cors/mod.ts"
+  },
+  "tasks": {
+    "start": "deno run --no-check --allow-net --allow-read --allow-env  --env-file=.env --allow-sys main.ts"
+  },
+  "compilerOptions": {
+    "jsx": "precompile",
+    "jsxImportSource": "hono/jsx"
+  }
+}

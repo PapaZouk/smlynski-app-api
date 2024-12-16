@@ -9,7 +9,7 @@ interface databaseConfig {
 }
 
 export const getDbConfig = () => {
-  const env = Deno.env.get("DENO_ENV") || "";
+  const env = Deno.env.get("ENV") || "";
 
   let username: string;
   let password: string;

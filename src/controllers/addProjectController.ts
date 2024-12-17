@@ -6,7 +6,7 @@ import validateProject from "../validators/projectValidator.ts";
 import { verifyToken } from "../auth/verifyToken.ts";
 
 export const addProjectController = async (c: Context) => {
-    console.log('Requesting addProjectController');
+    console.log('Requesting to add project');
     try {
         const token = c.req.header()["authorization"].split(" ")[1];
         const payload = await verifyToken(token);
@@ -19,6 +19,7 @@ export const addProjectController = async (c: Context) => {
         await connectDb();
 
         const data = await c.req.formData();
+        console.log('Form Data:', data);
 
         if (
             !data.has("name") ||

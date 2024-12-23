@@ -19,7 +19,7 @@ export const addOfferController = async (c: Context) => {
 
     const data = await c.req.formData();
 
-    if (!data.has("title") || !data.has("description") || !data.has("details") || !data.has("icon") || !data.has("image")) {
+    if (!data.has("title") || !data.has("description") || !data.has("details") || !data.has("image")) {
         return c.json({ message: "All properties are required " });
     }
 
@@ -31,7 +31,6 @@ export const addOfferController = async (c: Context) => {
         title: data.get("title") as string,
         description: data.get("description") as string,
         details: data.get("details") as string,
-        icon: data.get("icon") as string,
         image: {
             data: Buffer.from(imageData),
             fileName: imageFile.name,

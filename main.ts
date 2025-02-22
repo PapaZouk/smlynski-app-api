@@ -18,11 +18,7 @@ import {deleteProjectController} from "./src/controllers/deleteProjectController
 import {deleteOfferController} from "./src/controllers/deleteOfferController.ts";
 
 const app = new Hono();
-const secretKey = Deno.env.get('JWT_SECRET_KEY');
-
-if (!secretKey) {
-    throw new Error('JWT_SECRET_KEY environment variable is required');
-}
+const secretKey = Deno.env.get('JWT_SECRET_KEY') || '';
 
 app.use("*", cors());
 app.use(logger());

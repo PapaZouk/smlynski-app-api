@@ -15,6 +15,7 @@ import {
 import {generateToken} from "./src/auth/generateToken.ts";
 import {healthCheckController} from "./src/controllers/healthCheckController.ts";
 import {deleteProjectController} from "./src/controllers/deleteProjectController.ts";
+import {deleteOfferController} from "./src/controllers/deleteOfferController.ts";
 
 const app = new Hono();
 const secretKey = Deno.env.get('JWT_SECRET_KEY');
@@ -35,6 +36,7 @@ app.get('/api/auth/offer/:id', async (c: Context) => await getOfferController(c)
 app.post('/api/auth/feedback', async (c: Context) => await addFeedbackController(c));
 app.post('/api/auth/offer', async (c: Context) => await addOfferController(c));
 app.post('/api/auth/project', async (c: Context) => await addProjectController(c));
+app.delete('/api/auth/offer/:id', async (c: Context) => await deleteOfferController(c));
 
 app.delete('/api/auth/project/:id', async (c: Context) => await deleteProjectController(c));
 

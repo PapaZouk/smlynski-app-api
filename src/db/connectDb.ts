@@ -11,6 +11,7 @@ export async function connectDb() {
   const config = getDbConfig();
 
   try {
+    console.log("Connecting to DB with url: ", config.url);
     await mongoose.connect(config.url);
     isConnected = true;
     console.log("Connected to DB");

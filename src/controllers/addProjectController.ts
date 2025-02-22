@@ -19,7 +19,6 @@ export const addProjectController = async (c: Context) => {
         await connectDb();
 
         const data = await c.req.formData();
-        console.log('Form Data:', data);
 
         if (
             !data.has("name") ||

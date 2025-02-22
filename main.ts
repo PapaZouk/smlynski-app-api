@@ -20,10 +20,14 @@ import {deleteOfferController} from "./src/controllers/deleteOfferController.ts"
 const app = new Hono();
 const secretKey = Deno.env.get('JWT_SECRET_KEY');
 
+if (!secretKey) {
+    throw new Error('JWT_SECRET_KEY environment variable is required');
+}
+
 app.use("*", cors());
 app.use(logger());
 app.use('/api/auth/*', jwt({
-    secret: secretKey || '', alg: 'HS256' })
+    secret: secretKey, alg: 'HS256' })
 );
 
 app.get('/api/health', async (c: Context) => await healthCheckController(c));
